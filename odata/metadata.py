@@ -244,7 +244,7 @@ class MetaData(object):
                 enum_task = progress.add_task(f"Enums for {schema['name']}", total=len(schema['enum_types']))
                 for enum_type in schema['enum_types']:
                     progress.update(enum_task, advance=1)
-                    names = [(i['name'], i['value']) for i in enum_type['members']]
+                    names = [(i['name'], i['value']) for i in enum_type['members'] if i['name'] != "_x0020_"]
                     created_enum = EnumType(enum_type['name'], names=names)
                     all_types[enum_type['fully_qualified_name']] = created_enum
 
